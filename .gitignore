@@ -11,6 +11,11 @@ data/raw/*
 !data/raw/.gitkeep
 data/processed/*
 artifacts/*
+!artifacts/.gitkeep
+!artifacts/care_return_pipeline.joblib
+
 reports/*
+!reports/.gitkeep
+!reports/evaluation.json
 .env
 .DS_Store

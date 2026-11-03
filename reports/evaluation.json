@@ -1,0 +1,112 @@
+{
+  "project": "CareReturn",
+  "data_audit": {
+    "rows": 101766,
+    "columns_received": 50,
+    "predictor_count": 46,
+    "positive_rate": 0.11159915885462728,
+    "unique_patients": 71518,
+    "missing_cells": 374020,
+    "excluded_columns": [
+      "discharge_disposition_id",
+      "encounter_id",
+      "patient_nbr",
+      "readmitted"
+    ]
+  },
+  "partition_rows": {
+    "train": 60935,
+    "validation": 20457,
+    "test": 20374
+  },
+  "partition_patients": {
+    "train": 42910,
+    "validation": 14304,
+    "test": 14304
+  },
+  "validation_comparison": {
+    "logistic": {
+      "threshold": 0.37,
+      "average_precision": 0.19629720562951117,
+      "roc_auc": 0.6360032320314304,
+      "precision": 0.13759841123483935,
+      "recall": 0.8283518360375747,
+      "f1": 0.2359953774101332,
+      "f2": 0.41334640132952655,
+      "brier_score": 0.22571828515475242,
+      "confusion_matrix": [
+        [
+          5956,
+          12159
+        ],
+        [
+          402,
+          1940
+        ]
+      ]
+    },
+    "random_forest": {
+      "threshold": 0.33999999999999997,
+      "average_precision": 0.1995330484962104,
+      "roc_auc": 0.6557179637730572,
+      "precision": 0.14056338028169013,
+      "recall": 0.852263023057216,
+      "f1": 0.2413251118365373,
+      "f2": 0.42345553292600135,
+      "brier_score": 0.17610174804856113,
+      "confusion_matrix": [
+        [
+          5911,
+          12204
+        ],
+        [
+          346,
+          1996
+        ]
+      ]
+    },
+    "extra_trees": {
+      "threshold": 0.35,
+      "average_precision": 0.188802073753397,
+      "roc_auc": 0.6372862155698023,
+      "precision": 0.13551620447711327,
+      "recall": 0.8659265584970111,
+      "f1": 0.234356040908303,
+      "f2": 0.41671803723338674,
+      "brier_score": 0.18845451455256332,
+      "confusion_matrix": [
+        [
+          5178,
+          12937
+        ],
+        [
+          314,
+          2028
+        ]
+      ]
+    }
+  },
+  "selected_model": "random_forest",
+  "held_out_test": {
+    "threshold": 0.33999999999999997,
+    "average_precision": 0.18298018076330413,
+    "roc_auc": 0.6420428511135615,
+    "precision": 0.1313301823092505,
+    "recall": 0.8659839715048976,
+    "f1": 0.22807223264540338,
+    "f2": 0.40871648314701187,
+    "brier_score": 0.1803398822598524,
+    "confusion_matrix": [
+      [
+        5263,
+        12865
+      ],
+      [
+        301,
+        1945
+      ]
+    ]
+  },
+  "model_artifact": "artifacts\\care_return_pipeline.joblib",
+  "interpretation": "Metrics describe this retrospective dataset only; they are not evidence of clinical utility."
+}
