@@ -46,8 +46,25 @@ st.markdown("**Hospital readmission analytics** · Cohort exploration · Model e
 st.warning("Research and educational use only. Predictions and associations must not be used for patient care, triage, discharge, or treatment decisions.")
 
 if not DATA_PATH.exists():
-    st.error("Dataset not found. Run `python scripts/fetch_dataset.py` from the project folder first.")
-    st.stop()
+    with st.spinner("Downloading hospital readmission dataset from UCI..."):
+        try:
+            from ucimlrepo import fetch_ucirepo
+
+            dataset = fetch_ucirepo(id=296)
+            downloaded_data = dataset.data.original
+
+            if downloaded_data is None or downloaded_data.empty:
+                raise ValueError("UCI returned an empty dataset.")
+
+            DATA_PATH.parent.mkdir(parents=True, exist_ok=True)
+            downloaded_data.to_csv(DATA_PATH, index=False)
+
+            st.success("Hospital dataset downloaded successfully!")
+
+        except Exception as e:
+            st.error(f"Dataset download failed: {e}")
+            st.info("Please check the deployment logs and try again.")
+            st.stop()
 frame = load_data(str(DATA_PATH), DATA_PATH.stat().st_mtime)
 prepared = prepare_encounters(frame)
 frame = frame.copy()
