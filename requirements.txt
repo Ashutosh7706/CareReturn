@@ -8,3 +8,4 @@ streamlit>=1.35
 plotly>=5.20
 pytest>=7.4
 ruff>=0.3
+-e .
